@@ -83,6 +83,7 @@ const Login: React.FC = () => {
                 password: password.current ?? "",
               }),
             );
+            navigation.navigate("forgotPassword", { email: "" });
           } else {
             // eslint-disable-next-line no-console
             console.log("loginPressed with errors in the fields");
