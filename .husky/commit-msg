@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+message="$(cat $1)"
+requiredPattern="^(chore|docs|feat|fix|refactor|style|wip|test|hotfix|rebase): EUR-.*$"
+if ! [[ $message =~ $requiredPattern ]];
+then
+  echo "🚨🚨🚨 Wrong commit message! 🚨🚨🚨"
+  echo "The commit message must have this format:"
+  echo "<verb in imperative mood>: EUR-1234"
+  echo "💡💡 EUR is the JIRA identifier related to this project 💡💡"
+  echo "Allowed verbs in imperative mood: chore, docs, feat, fix, refactor, style, wip, test, hotfix, rebase"
+  echo "Example, fix: EUR-123 or feat: EUR-123"
+  echo "--------------------"
+  echo "Your commit message was:"
+  echo $message
+  echo "--------------------"
+  echo "For more information, check script in .husky/commit-msg"
+  echo "🚨 Commit Message Error 🚨, check above"
+  exit 1
+fi

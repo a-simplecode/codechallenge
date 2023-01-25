@@ -1,0 +1,27 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+npm run test && npm run lint
+
+exec < /dev/tty
+# Read user input to indicate which version
+
+read -p "Please specify the type of version release update [patch,minor,major] :" ver
+
+# Check if input is blank 
+if [ -z "$ver" ]
+then 
+    echo 'Input cannot be blank!' 
+    exit 0 
+fi 
+echo $ver
+
+# checkk if values are correct
+
+if [ $ver=="minor" ] || [ $ver=="patch" ] || [ $ver=="major" ]
+then
+ npm --no-git-tag-version version $ver && git add .
+else
+ echo 'invalid parameter please insert a valid parameter'
+ exit 0
+fi

@@ -1,0 +1,70 @@
+# This project is Built with eurisko-platform-boilerplate-react-native-app
+
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
+
+## Overview 📚
+
+This app is built with the CDD Component Driven Development strategy since TDD Test Driven Development is unrealistic with front-end development.
+
+Our software breakdown overview will be like this:
+
+[UI] will use the Atomic architect to build up our software UI components, they are purely UI responsible and all of them are stateless react components and style-able
+
+[Logic] will use the redux-toolkit architect, it will be responsible for all the app’s use cases, logic, data fetching/submission, and business rules, we will refer to them as features, the features are stateful react components and style-less
+
+## Restrictions 🔴
+
+:arrow_right: To enforce the split between UI and Logic, we will use eslint’s no-restricted-imports , the rules will confirm the below:
+
+Since the features are stateful react components and style-less, we are not allowing imports such StyleSheet.create in any file under the features folder
+
+Since components are stateless components and style-able, we are not allowing any imports from redux libraries
+
+:arrow_right: To enforce files and folders naming convention, we will use eslint’s check-file/filename-naming-convention and check-file/folder-naming-convention, the rules are simple
+
+The folders under src will follow camelCase
+
+The files under components and features will follow PascaleCase
+
+:arrow_right:  For naming our UI components, we are following this [strategy](https://medium.com/@wittydeveloper/react-components-naming-convention-%EF%B8%8F-b50303551505)
+
+## Diagram flow 📊
+
+The below drawing will explain how our software is being created from A~Z following SOLID principles and Redux ToolKit + Atomic Architecture
+
+![](https://raw.githubusercontent.com/fouadbakour/files/master/redux-arch.png)
+
+## Extra patterns ✅
+
+Factory pattern: The factory pattern allows us to factor out the process of object creation. This can have multiple purposes:
+
+the final object depends on the parameters.
+
+separate a simple object representation from the logic of creating it.
+
+it can be used for any data type, not just components, e.g: a function that gives UIModel array to build a flat list!
+
+## Folder & Files Templates 📂
+During development, you need to create new components and new features, to accelerate that, we created a predefined template that can help you to achieve that, this setup will be included by default once you start a new project using our project-creator template, but you can use these also with any existing project, to do so:
+
+- Install this extension https://marketplace.visualstudio.com/items?itemName=Huuums.vscode-fast-folder-structure on your VSCode
+- Whenever you want to create a new component or a new feature, do the below:
+
+- ![](https://raw.githubusercontent.com/fouadbakour/files/master/vscode-step2.png)
+  
+- ![](https://raw.githubusercontent.com/fouadbakour/files/master/vscode-step3.png)
+  
+- ![](https://raw.githubusercontent.com/fouadbakour/files/master/vscode-step4.png)
+
+## Troubleshooting 🔥
+
+If the terminal throws errors during the `pod install` and the errors are related to `Gem`
+try to run this at the `ios` folder instead of `pod install`
+
+```shell
+bundle install
+```
+
+## License
+
+Eurisko Mobility
