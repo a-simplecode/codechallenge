@@ -9,7 +9,12 @@ import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { LoginNavigationProp } from "navigation/stacks/authentication/AuthenticationStack.types";
 import { Text, View } from "react-native";
 
-const ForgotPassword: React.FC = () => {
+interface Props {
+  route: { params: { email: string } };
+}
+
+const ForgotPassword: React.FC<Props> = ({ route }) => {
+  const { email } = route.params;
   /**
    * Hooks
    */
@@ -47,7 +52,7 @@ const ForgotPassword: React.FC = () => {
    */
   return (
     <View>
-      <Text>{"sd"}</Text>
+      <Text>{email}</Text>
     </View>
   );
 };
