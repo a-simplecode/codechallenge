@@ -30,7 +30,7 @@ const ForgotPassword: React.FC<Props> = ({ route }) => {
    */
   useEffect(() => {
     // eslint-disable-next-line no-console
-    console.log("---- CURRENT SCREEN NAVIGATION ----", navigation);
+    // console.log("---- CURRENT SCREEN NAVIGATION ----", navigation);
   }, [navigation]);
 
   /**

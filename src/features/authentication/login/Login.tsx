@@ -35,13 +35,13 @@ const Login: React.FC = () => {
    */
   useEffect(() => {
     // eslint-disable-next-line no-console
-    console.log("---- CURRENT SCREEN NAVIGATION ----", navigation);
+    // console.log("---- CURRENT SCREEN NAVIGATION ----", navigation);
   }, [navigation]);
 
   useEffect(() => {
     if (accessToken != null) {
       // eslint-disable-next-line no-console
-      console.log("accessToken?", accessToken);
+      // console.log("accessToken?", accessToken);
     }
   }, [accessToken]);
 

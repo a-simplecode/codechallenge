@@ -1,5 +1,5 @@
 /** ****************************************
- *  Disclaimer : This template is created based on 
+ *  Disclaimer : This template is created based on
  *  https://eurisko.atlassian.net/wiki/spaces/EKR/pages/914522133/Redux+ToolKit+Atomic+Architecture
  *  and
  *  https://eurisko.atlassian.net/wiki/spaces/EKR/pages/919076875/Project+skeleton+template
@@ -12,7 +12,7 @@ import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { NavigationProp } from "navigation/stacks/authentication/AuthenticationStack.types"; // TODO: - Fix this or remove it
 import { decrement, increment, incrementAsync, incrementByAmount, selectCount, selectStatus } from "./<FTName | pascalcase>Slice";
 
-const <FTName | pascalcase>: React.FC = () => {
+const <FTName | pascalcase >: React.FC = () => {
   /**
    * Hooks
    */
@@ -32,7 +32,7 @@ const <FTName | pascalcase>: React.FC = () => {
    */
   useEffect(() => {
     // eslint-disable-next-line no-console
-    console.log("---- CURRENT SCREEN NAVIGATION ----", navigation);
+    // console.log("---- CURRENT SCREEN NAVIGATION ----", navigation);
   }, [navigation]);
 
   /**
@@ -85,4 +85,4 @@ const <FTName | pascalcase>: React.FC = () => {
   );
 };
 
-export default <FTName | pascalcase>;
+export default <FTName | pascalcase >;

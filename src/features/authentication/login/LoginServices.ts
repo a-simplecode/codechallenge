@@ -24,7 +24,8 @@ export class LoginServices {
     return new Promise((resolve) => {
       resolve(
         instance.post("/auth/signin", {
-          username: request.email,
+          // username: request.email,
+          username: "candidate",
           password: request.password,
         }),
       );

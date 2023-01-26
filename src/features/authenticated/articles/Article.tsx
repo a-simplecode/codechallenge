@@ -21,8 +21,7 @@ const Article: React.FC = () => {
    * Hooks
    */
   const dispatch = useAppDispatch();
-  // const articlesData = useAppSelector((state) => state.article.value.data.response.docs);
-  const articlesData = useAppSelector((state) => []);
+  const articlesData = useAppSelector((state) => state.article.value.data.response.docs);
 
   /**
    * References
