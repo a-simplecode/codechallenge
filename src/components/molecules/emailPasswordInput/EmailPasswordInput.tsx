@@ -26,7 +26,8 @@ const EmailPasswordInput = forwardRef(({ extractValues, formErrorMessages }: Ema
    * Validation schema
    */
   const signupValidationSchema = yup.object().shape({
-    email: yup.string().email(strings.validation.email).required(formErrorMessages.emptyField.en),
+    // email: yup.string().email(strings.validation.email).required(formErrorMessages.emptyField.en),
+    email: yup.string().required(formErrorMessages.emptyField.en),
     password: yup
       .string()
       .min(
