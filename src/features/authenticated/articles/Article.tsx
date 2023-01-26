@@ -14,7 +14,6 @@ import ArticleTemplate from "templates/articlesTemplate/ArticlesTemplate";
 import { ArticleModel } from "./ArticleServices";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import ENCRYPTION_ENUM from "utilities/encryption/encryptionEnum";
-import { useQuery } from "react-query";
 
 const Article: React.FC = () => {
   /**
@@ -51,15 +50,14 @@ const Article: React.FC = () => {
   };
 
   useEffect(() => {
+    const fetchData = async () => {
+      const token = await AsyncStorage.getItem(ENCRYPTION_ENUM.access_token);
+      if (token !== null) {
+        await dispatch(getArticle(page));
+      }
+    };
     fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const token = await AsyncStorage.getItem(ENCRYPTION_ENUM.access_token);
-    if (token !== null) {
-      await dispatch(getArticle(page));
-    }
-  };
+  }, [dispatch, page]);
 
   useEffect(() => {
     setArticles((previousData): ArticleModel[] => {
