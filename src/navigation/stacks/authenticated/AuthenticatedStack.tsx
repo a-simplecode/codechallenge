@@ -17,7 +17,7 @@ const AuthenticatedStackNavigator: React.FC = () => {
         name="article"
         component={Article}
         options={{
-          headerTitle: "article amine",
+          headerTitle: "Dashboard",
           headerRight: () => (
             <Button
               title="Logout"
