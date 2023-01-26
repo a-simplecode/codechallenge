@@ -7,10 +7,11 @@
 import React, { useRef, useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "app/hooks";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
-import LoginTemplate from "templates/loginTemplate/LoginTemplate";
 import { LoginNavigationProp } from "navigation/stacks/authentication/AuthenticationStack.types";
-import { loginWithEmailAndPassword, selectAccessToken, selectStatus } from "./LoginSlice";
+
+import LoginTemplate from "templates/loginTemplate/LoginTemplate";
 import { EmailPasswordInputProps } from "molecules/emailPasswordInput/EmailPasswordInput.types";
+import { loginWithEmailAndPassword, selectAccessToken, selectStatus } from "./LoginSlice";
 
 const Login: React.FC = () => {
   /**
@@ -83,7 +84,6 @@ const Login: React.FC = () => {
                 password: password.current ?? "",
               }),
             );
-            navigation.navigate("forgotPassword", { email: email.current ?? "" });
           } else {
             // eslint-disable-next-line no-console
             console.log("loginPressed with errors in the fields");

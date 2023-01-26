@@ -1,19 +1,33 @@
+/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable no-console */
 // Model
-export type LoginResponse = {
-  accessToken?: string | undefined;
+import { instance } from "../../../http/HttpRequest";
+
+type errorType = {
+  statusCode: number | null;
+  message: string;
+  error: string;
 };
+
+export type LoginResponse = {
+  data: { accessToken: string; error?: errorType | null };
+};
+
 // Model
 export type LoginRequest = {
-  email: string;
-  password: string;
+  email: string | null;
+  password: string | null;
 };
 
 export class LoginServices {
-  async fakeLogin(request: LoginRequest): Promise<LoginResponse> {
-    return new Promise((resolve) =>
-      setTimeout(() => {
-        return resolve({ accessToken: `AccessToken for ${request.email}` });
-      }, 500),
-    );
+  async handleLogin(request: LoginRequest): Promise<LoginResponse> {
+    return new Promise((resolve) => {
+      resolve(
+        instance.post("/auth/signin", {
+          username: request.email,
+          password: request.password,
+        }),
+      );
+    });
   }
 }
