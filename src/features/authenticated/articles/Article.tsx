@@ -9,7 +9,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "app/hooks";
 import { useFocusEffect } from "@react-navigation/native";
-import { useQuery } from "react-query";
 import { getArticle } from "./ArticleSlice";
 import ArticleTemplate from "templates/articlesTemplate/ArticlesTemplate";
 import { ArticleModel } from "./ArticleServices";
@@ -50,21 +49,21 @@ const Article: React.FC = () => {
     if (page < 2) setPage(page + 1);
   };
 
-  const { status, refetch } = useQuery(
-    ["data", page],
-    async () => {
-      const token = await AsyncStorage.getItem(ENCRYPTION_ENUM.access_token);
-      if (token !== null) {
-        return await dispatch(getArticle(page));
-      }
-    },
-    {
-      onError: (error: number) => {
-        // eslint-disable-next-line no-console
-        console.log("error", error);
-      },
-    },
-  );
+  // const { status, refetch } = useQuery(
+  //   ["data", page],
+  //   async () => {
+  //     const token = await AsyncStorage.getItem(ENCRYPTION_ENUM.access_token);
+  //     if (token !== null) {
+  //       return await dispatch(getArticle(page));
+  //     }
+  //   },
+  //   {
+  //     onError: (error: number) => {
+  //       // eslint-disable-next-line no-console
+  //       console.log("error", error);
+  //     },
+  //   },
+  // );
 
   useEffect(() => {
     setArticles((previousData): ArticleModel[] => {
@@ -75,7 +74,16 @@ const Article: React.FC = () => {
   /**
    * Render UI
    */
-  return <ArticleTemplate data={articles} loadMoreData={loadMoreData} status={status} refetch={refetch} />;
+  return (
+    <ArticleTemplate
+      data={articles}
+      loadMoreData={loadMoreData}
+      status={"success"}
+      refetch={() => {
+        return {};
+      }}
+    />
+  );
 };
 
 export default Article;
