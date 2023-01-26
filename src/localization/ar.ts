@@ -4,6 +4,7 @@ const ar = {
     passwordMustBe: "يجب أن تكون كلمة المرور",
     characters: "أحرف",
     passwordRequired: "كلمة المرور مطلوبة",
+    emptyField: "هذا حقل فارغ",
   },
   labels: {
     password: "كلمة المرور",
@@ -14,6 +15,9 @@ const ar = {
   placeholders: {
     password: "ادخل رقمك السري",
     email: "أدخل بريدك الإلكتروني",
+  },
+  headerTitle: {
+    articlePage: "مقالات",
   },
 };
 

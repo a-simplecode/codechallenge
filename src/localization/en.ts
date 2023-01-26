@@ -4,6 +4,7 @@ const en = {
     passwordMustBe: "Password must be",
     characters: "characters",
     passwordRequired: "Password is required",
+    emptyField: "This is empty field",
   },
   labels: {
     password: "Password",
@@ -14,6 +15,9 @@ const en = {
   placeholders: {
     password: "Enter your password",
     email: "Enter your email",
+  },
+  headerTitle: {
+    articlePage: "Articles",
   },
 };
 
