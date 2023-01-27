@@ -13,6 +13,7 @@ import defaultStyles from "./ArticleList.styles";
 import { FlatList, RefreshControl } from "react-native-gesture-handler";
 import ArticlesItems from "molecules/articlesItems/ArticlesItems";
 import { ArticleModel } from "./ArticleList.types";
+import NoDataCard from "atoms/noDataCard/NoDataCard";
 
 const Articles: React.FC<ArticlesProps> = ({ text, textStyle, viewStyle, data, loadMoreData, status, refetch }) => {
   function renderItem(item: ArticleModel) {
@@ -24,13 +25,17 @@ const Articles: React.FC<ArticlesProps> = ({ text, textStyle, viewStyle, data, l
       {status === "loading" && data.length === 0 ? <ActivityIndicator size="large" /> : <></>}
       <View style={defaultStyles.flatlistStyle}>
         <Text style={[defaultStyles.text, textStyle]}>{text}</Text>
-        <FlatList
-          data={data}
-          renderItem={({ item }) => renderItem(item)}
-          onEndReached={() => loadMoreData()}
-          refreshControl={<RefreshControl refreshing={status === "loading"} onRefresh={() => refetch()} />}
-          ListFooterComponent={status === "loading" && data.length !== 0 ? <ActivityIndicator size="large" /> : null}
-        />
+        {data.length > 0 ? (
+          <FlatList
+            data={data}
+            renderItem={({ item }) => renderItem(item)}
+            onEndReached={() => loadMoreData()}
+            refreshControl={<RefreshControl refreshing={status === "loading"} onRefresh={() => refetch()} />}
+            ListFooterComponent={status === "loading" && data.length !== 0 ? <ActivityIndicator size="large" /> : null}
+          />
+        ) : (
+          <NoDataCard />
+        )}
       </View>
     </View>
   );
