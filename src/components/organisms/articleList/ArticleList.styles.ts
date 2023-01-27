@@ -15,7 +15,7 @@ export default StyleSheet.create({
     textAlign: "center",
   },
   view: {
-    backgroundColor: "grey",
+    backgroundColor: "#e8eced",
     flex: 0,
   },
   flatlistStyle: {

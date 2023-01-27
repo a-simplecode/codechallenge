@@ -21,7 +21,7 @@ module.exports = {
     ecmaVersion: "6",
     sourceType: "module",
   },
-  plugins: ["react", "@typescript-eslint", "prettier", "react-hooks", "module-resolver", "check-file"],
+  plugins: ["react", "@typescript-eslint", "prettier", "react-hooks", "module-resolver", "check-file", "react-native"],
   overrides: [
     {
       files: ["**/components/**/*.style**.ts", "src/App.tsx", "**/app/**", "**/navigation/**"],
@@ -46,30 +46,79 @@ module.exports = {
         ],
       },
     },
-  ],
-  rules: {
-    "no-restricted-imports": [
-      "error",
-      {
-        paths: [
+    {
+      files: ["**/components/atoms/**", "**/components/organisms/**", "**/components/molecules/**"],
+      rules: {
+        "no-restricted-imports": [
+          "error",
           {
-            name: "react-native",
-            importNames: ["StyleSheet"],
-            message: "Please import StyleSheet only in *.styles.ts files within the `components` folder.",
-          },
-          {
-            name: "app/hooks",
-            message: "Please import redux related items in features files.",
-          },
-          {
-            name: "react-redux",
-            message: "Please import redux related items from app/hooks",
-          },
-          {
-            name: "@reduxjs/toolkit",
-            message: "Please import redux related items from app/hooks",
+            paths: [
+              {
+                name: "react-native",
+                importNames: ["SafeAreaView", "StatusBar"],
+                message:
+                  "Please import SafeAreaView and/or StatusBar only in the highest level of components, which is the `template`",
+              },
+              {
+                name: "app/hooks",
+                message: "Please import redux related items in features files.",
+              },
+              {
+                name: "react-redux",
+                message: "Please import redux related items from app/hooks",
+              },
+              {
+                name: "@reduxjs/toolkit",
+                message: "Please import redux related items from app/hooks",
+              },
+            ],
+            patterns: [
+              {
+                group: ["features/*"],
+                message: "features are not related to components, you can't access them within components",
+              },
+            ],
           },
         ],
+      },
+    },
+    {
+      files: ["**/components/templates/**"],
+      rules: {
+        "no-restricted-imports": [
+          "error",
+          {
+            paths: [
+              {
+                name: "app/hooks",
+                message: "Please import redux related items in features files.",
+              },
+              {
+                name: "react-redux",
+                message: "Please import redux related items from app/hooks",
+              },
+              {
+                name: "@reduxjs/toolkit",
+                message: "Please import redux related items from app/hooks",
+              },
+            ],
+            patterns: [
+              {
+                group: ["features/*"],
+                message: "features are not related to components, you can't access them within components",
+              },
+            ],
+          },
+        ],
+      },
+    },
+  ],
+  rules: {
+    "react-native/no-inline-styles": 1,
+    "prettier/prettier": [
+      "error",
+      {
+        "no-inline-styles": true,
       },
     ],
     "module-resolver/use-alias": 2,
