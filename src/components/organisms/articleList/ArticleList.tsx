@@ -12,7 +12,7 @@ import { ArticlesProps } from "./ArticleList.types";
 import defaultStyles from "./ArticleList.styles";
 import { FlatList, RefreshControl } from "react-native-gesture-handler";
 import ArticlesItems from "molecules/articlesItems/ArticlesItems";
-import { ArticleModel } from "features/authenticated/articles/ArticleServices";
+import { ArticleModel } from "./ArticleList.types";
 
 const Articles: React.FC<ArticlesProps> = ({ text, textStyle, viewStyle, data, loadMoreData, status, refetch }) => {
   function renderItem(item: ArticleModel) {

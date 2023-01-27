@@ -6,8 +6,13 @@
  * using VSCode extension: https://marketplace.visualstudio.com/items?itemName=Huuums.vscode-fast-folder-structure
  ****************************************** */
 
-import { ArticleModel } from "features/authenticated/articles/ArticleServices";
 import { TextStyle, ViewStyle } from "react-native";
+export interface ArticleModel {
+  abstract: string;
+  source: string;
+  multimedia: { url: string }[];
+  pub_date: string;
+}
 
 type statusEnum = "loading" | "error" | "success" | "idle";
 interface ArticlesProps {
