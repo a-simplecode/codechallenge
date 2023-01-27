@@ -26,6 +26,6 @@ export default StyleSheet.create({
     flex: 0,
   },
   flatlistStyle: {
-    marginBottom: verticalScale(45),
+    marginBottom: verticalScale(220),
   },
 });
