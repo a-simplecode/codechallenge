@@ -7,7 +7,7 @@
  ****************************************** */
 
 import React from "react";
-import { ActivityIndicator, Text, View } from "react-native";
+import { ActivityIndicator, TextInput, View } from "react-native";
 import { ArticlesProps } from "./ArticleList.types";
 import defaultStyles from "./ArticleList.styles";
 import { FlatList, RefreshControl } from "react-native-gesture-handler";
@@ -15,7 +15,7 @@ import ArticlesItems from "molecules/articlesItems/ArticlesItems";
 import { ArticleModel } from "./ArticleList.types";
 import NoDataCard from "atoms/noDataCard/NoDataCard";
 
-const Articles: React.FC<ArticlesProps> = ({ text, textStyle, viewStyle, data, loadMoreData, status, refetch }) => {
+const Articles: React.FC<ArticlesProps> = ({ text, viewStyle, data, loadMoreData, status, refetch }) => {
   function renderItem(item: ArticleModel) {
     return <ArticlesItems item={item} />;
   }
@@ -24,7 +24,13 @@ const Articles: React.FC<ArticlesProps> = ({ text, textStyle, viewStyle, data, l
     <View style={[defaultStyles.view, viewStyle]}>
       {status === "loading" && data.length === 0 ? <ActivityIndicator size="large" /> : <></>}
       <View style={defaultStyles.flatlistStyle}>
-        <Text style={[defaultStyles.text, textStyle]}>{text}</Text>
+        <View style={defaultStyles.viewInput}>
+          <TextInput
+            placeholder="Search ..."
+            onChangeText={() => {}}
+            defaultValue={text}
+          />
+        </View>
         {data.length > 0 ? (
           <FlatList
             data={data}
