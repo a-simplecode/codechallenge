@@ -7,7 +7,7 @@
  ****************************************** */
 
 import React from "react";
-import { ActivityIndicator, SafeAreaView, Text, View } from "react-native";
+import { ActivityIndicator, Text, View } from "react-native";
 import { ArticlesProps } from "./ArticleList.types";
 import defaultStyles from "./ArticleList.styles";
 import { FlatList, RefreshControl } from "react-native-gesture-handler";
@@ -20,21 +20,19 @@ const Articles: React.FC<ArticlesProps> = ({ text, textStyle, viewStyle, data, l
   }
 
   return (
-    <SafeAreaView>
-      <View style={[defaultStyles.view, viewStyle]}>
-        {status === "loading" && data.length === 0 ? <ActivityIndicator size="large" /> : <></>}
-        <View style={defaultStyles.flatlistStyle}>
-          <Text style={[defaultStyles.text, textStyle]}>{text}</Text>
-          <FlatList
-            data={data}
-            renderItem={({ item }) => renderItem(item)}
-            onEndReached={() => loadMoreData()}
-            refreshControl={<RefreshControl refreshing={status === "loading"} onRefresh={() => refetch()} />}
-            ListFooterComponent={status === "loading" && data.length !== 0 ? <ActivityIndicator size="large" /> : null}
-          />
-        </View>
+    <View style={[defaultStyles.view, viewStyle]}>
+      {status === "loading" && data.length === 0 ? <ActivityIndicator size="large" /> : <></>}
+      <View style={defaultStyles.flatlistStyle}>
+        <Text style={[defaultStyles.text, textStyle]}>{text}</Text>
+        <FlatList
+          data={data}
+          renderItem={({ item }) => renderItem(item)}
+          onEndReached={() => loadMoreData()}
+          refreshControl={<RefreshControl refreshing={status === "loading"} onRefresh={() => refetch()} />}
+          ListFooterComponent={status === "loading" && data.length !== 0 ? <ActivityIndicator size="large" /> : null}
+        />
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 export default Articles;
