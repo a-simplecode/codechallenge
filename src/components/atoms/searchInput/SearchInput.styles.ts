@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
   view: {
+    position: "relative",
     height: 40,
     borderWidth: 1,
     borderRadius: 10,
@@ -11,5 +12,11 @@ export default StyleSheet.create({
     marginTop: 20,
     marginBottom: 10,
     padding: 10,
+  },
+  clear: {
+    position: "absolute",
+    padding: 10,
+    right: 6,
+    backgroundColor: "white",
   },
 });
