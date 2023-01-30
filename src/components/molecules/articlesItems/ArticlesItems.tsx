@@ -28,7 +28,7 @@ const ArticlesItems: React.FC<ArticlesItemsProps> = ({ item }) => {
         ) : (
           <Image
             source={{
-              uri: "https://images.pexels.com/photos/4126743/pexels-photo-4126743.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+              uri: "https://picsum.photos/200/300",
             }}
             style={defaultStyles.image}
           />
