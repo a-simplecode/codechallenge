@@ -23,6 +23,7 @@ interface ArticlesProps {
   data: ArticleModel[];
 
   loadMoreData: () => void;
+  searchData: (s: string) => void;
 
   status: statusEnum;
 

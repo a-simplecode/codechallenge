@@ -42,11 +42,17 @@ const Article: React.FC = () => {
   );
 
   const [page, setPage] = useState(1);
+  const [search, setSearch] = useState("");
 
   const [articles, setArticles] = useState<ArticleModel[]>([]);
+  const [filteredArticles, setFilteredArticles] = useState<ArticleModel[]>([]);
 
-  const loadMoreData = async () => {
+  const loadMoreData = () => {
     if (page < 2) setPage(page + 1);
+  };
+
+  const searchData = async (s: string) => {
+    setSearch(s);
   };
 
   useEffect(() => {
@@ -65,13 +71,20 @@ const Article: React.FC = () => {
     });
   }, [articlesData]);
 
+  useEffect(() => {
+    setFilteredArticles((): ArticleModel[] => {
+      return search ? articles.filter((data) => data.abstract.toLowerCase().includes(search.toLowerCase())) : articles;
+    });
+  }, [articles, search]);
+
   /**
    * Render UI
    */
   return (
     <ArticleTemplate
-      data={articles}
+      data={filteredArticles}
       loadMoreData={loadMoreData}
+      searchData={searchData}
       status={"success"}
       refetch={() => {
         return {};

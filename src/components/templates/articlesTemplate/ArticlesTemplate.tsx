@@ -11,12 +11,12 @@ import { ArticleTemplateProps } from "./ArticlesTemplate.types";
 import Articles from "organisms/articleList/ArticleList";
 import { StatusBar, SafeAreaView, View } from "react-native";
 
-const ArticleTemplate: React.FC<ArticleTemplateProps> = ({ data, loadMoreData, status, refetch }) => {
+const ArticleTemplate: React.FC<ArticleTemplateProps> = ({ data, loadMoreData, searchData, status, refetch }) => {
   return (
     <SafeAreaView>
       <View>
         <StatusBar barStyle="dark-content" />
-        <Articles data={data} loadMoreData={loadMoreData} status={status} refetch={refetch} />
+        <Articles data={data} loadMoreData={loadMoreData} searchData={searchData} status={status} refetch={refetch} />
       </View>
     </SafeAreaView>
   );

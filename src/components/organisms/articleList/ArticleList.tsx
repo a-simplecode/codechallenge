@@ -15,7 +15,7 @@ import ArticlesItems from "molecules/articlesItems/ArticlesItems";
 import { ArticleModel } from "./ArticleList.types";
 import NoDataCard from "atoms/noDataCard/NoDataCard";
 
-const Articles: React.FC<ArticlesProps> = ({ text, viewStyle, data, loadMoreData, status, refetch }) => {
+const Articles: React.FC<ArticlesProps> = ({ viewStyle, data, searchData, loadMoreData, status, refetch }) => {
   function renderItem(item: ArticleModel) {
     return <ArticlesItems item={item} />;
   }
@@ -25,11 +25,7 @@ const Articles: React.FC<ArticlesProps> = ({ text, viewStyle, data, loadMoreData
       {status === "loading" && data.length === 0 ? <ActivityIndicator size="large" /> : <></>}
       <View style={defaultStyles.flatlistStyle}>
         <View style={defaultStyles.viewInput}>
-          <TextInput
-            placeholder="Search ..."
-            onChangeText={() => {}}
-            defaultValue={text}
-          />
+          <TextInput placeholder="Search ..." onChangeText={(txt) => searchData(txt)} />
         </View>
         {data.length > 0 ? (
           <FlatList
