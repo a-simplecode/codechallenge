@@ -73,7 +73,13 @@ const Article: React.FC = () => {
 
   useEffect(() => {
     setFilteredArticles((): ArticleModel[] => {
-      return search ? articles.filter((data) => data.abstract.toLowerCase().includes(search.toLowerCase())) : articles;
+      return search
+        ? articles.filter(
+            (data) =>
+              data.headline?.main?.toLowerCase().includes(search.toLowerCase()) ||
+              data.abstract.toLowerCase().includes(search.toLowerCase()),
+          )
+        : articles;
     });
   }, [articles, search]);
 

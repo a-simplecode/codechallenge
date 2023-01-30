@@ -9,6 +9,7 @@
 import { instance } from "../../../http/HttpRequest";
 
 export interface ArticleModel {
+  headline?: { main?: string };
   abstract: string;
   source: string;
   multimedia: { url: string }[];

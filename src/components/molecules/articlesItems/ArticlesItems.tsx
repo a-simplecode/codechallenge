@@ -14,6 +14,7 @@ import moment from "moment";
 
 const ArticlesItems: React.FC<ArticlesItemsProps> = ({ item }) => {
   const imageUrl = "https://static01.nyt.com/" + item.multimedia[0]?.url;
+
   return (
     <View style={defaultStyles.parentView}>
       <View style={defaultStyles.imageView}>
@@ -35,10 +36,15 @@ const ArticlesItems: React.FC<ArticlesItemsProps> = ({ item }) => {
       </View>
       <View style={defaultStyles.descriptionViewParent}>
         <View>
-          <Text numberOfLines={2}>{item.abstract}</Text>
+          <Text numberOfLines={2} style={defaultStyles.title}>
+            {item.headline.main}
+          </Text>
+          <Text numberOfLines={2} style={defaultStyles.description}>
+            {item.abstract}
+          </Text>
         </View>
         <View style={defaultStyles.dateView}>
-          <Text>{moment(item.pub_date).format("YYYY-MM-DD hh:mm:ss a")}</Text>
+          <Text>{moment(item.pub_date).format("DD/MM/YYYY hh:mm a")}</Text>
         </View>
       </View>
     </View>

@@ -42,6 +42,14 @@ export default StyleSheet.create({
     height: "100%",
     justifyContent: "space-around",
   },
+  title: {
+    fontSize: 20,
+    marginBottom: 10,
+  },
+  description: {
+    fontSize: 13,
+    color: "#9da19e",
+  },
   dateView: {
     display: "flex",
     flexDirection: "column",
